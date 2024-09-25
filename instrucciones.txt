@@ -1,0 +1,52 @@
+--------- VISUALIZADOR SIT ---------
+
+
+*NO CAMBIAR NOMBRE DE CARPETAS Y ARCHIVOS O SE ROMPE TODO :)
+
+----------------------------------------------
+
+Carpetas y archivos:
+
+index.html ---> Estructura base de los elementos del proyecto, como cajas de ubicación
+
+-------------------
+ 
+carpeta assets ---> acá van los iconos/imagenes que se vinculan en el html o en el css 
+
+-------------------
+
+carpeta style ---> acá van los estilos de la web, colores, fuentes, grosores, etc
+
+-------------------
+
+carpeta js --> acá van distintos archivos javascript que hacen distintas cosas
+		
+   - managecapas.js --> acá se vinculan las capas de geoserver, osea acá agrego mis wfs,
+	 	     además, también van los manejos de visibilidad de capa, transparencia, etc
+		
+   - toolsmapas.js --> acá estan las herramientas del mapa (dibujar, medir, geolocalizacion, mapas)
+
+* Si yo creo un js distinto (otro archivo.js) siempre hay que vincularlo al html con la etiqueta <script>, y SIEMPRE al final (debajo del resto de scripts)
+
+
+----------------------------------------------
+
+
+*TRAER CAPA WMS DESDE GEOSERVER LOCAL* (no manejable con herramientas) esto va en managecapas.js
+
+
+//acá linkeo el geoserver
+const parcelarioLayer = L.tileLayer.wms(ipgeoserver + ':8080/geoserver/wms', {  
+
+    layers: 'VisualizadorSIT:PARCELARIO_URBANO_2021', //acá nombre IGUAL a como esta en geoserver
+    format: 'image/png', //dejar así, no cambiar
+    transparent: true,
+    opacity: 0.8, //da igual, la opacity viene definida en el .sld :)
+    maxZoom: 19 //hasta que nivel de zoom se puede ver la capa, no hace falta cambiar
+});
+
+
+----------------------------------------------
+
+
+*TRAER CAPA WFS DESDE GEOSERVER LOCAL* (puedo transformarla y consultar tabla de atributos)

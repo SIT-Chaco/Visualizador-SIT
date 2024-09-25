@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador SIT</title> <!-- Este es el titulo que se ve en la pestaña web  -->
+
+
+    <!-- Estilos de leaflet de las herramientas  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet.locatecontrol/0.60.0/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+
+    <!-- Estilos propios para visualizador  -->
+    <link rel="stylesheet" href="./style/style.css"/>
+
+    <!-- Fuente utilizada  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <!-- Logos y titulo del mapa a mostrar -->
+    <div id="map-container">
+        <div class="panel-izquierdo">
+            <div class="contenedor_titulo">
+                <div class="logos">
+                    <img src="./assets/img/logomin_icono.png" alt="">
+                    <div class="linea-vertical"></div>
+                    <img src="./assets/img/logo_icono.png" alt="">
+                    <div class="linea-vertical"></div>
+                </div>
+                <div class="titulomapa">
+                    <h2>Mapa base<br>Provincia del Chaco</h2> <!-- Acá cambio el título de la temática del mapa -->
+                </div>
+            </div>
+
+            
+        <!-- Panel de capas a la izquierda  -->
+        <div id="layers-panel">
+            <div id="layers-content">
+                <h3>Capas Activas</h3>
+                <div>
+
+                    <!-- Creo el contenedor para la capa1 dentro del panel de capas -->
+                    <div class="toggleLayer" id="capa1">
+                        <div class="layer_titulo">
+                        <img src="./assets/iconos/icon_eyeclose.png" alt="Capa 1" class="icono-ojo"> <!-- icono ojo de visibilidad  -->
+                        <span>Parcelario Urbano 2021</span> <!-- Nombre visible de la capa -->
+                        </div>
+                        <div class="layer_tools"> <!-- Herramientas de edición y consulta de capa  -->
+
+                        </div>
+                        <p class="op-titulo">Opacidad</p> <!-- Barra de opacidad  -->
+                        <input type="range" id="transparency1" min="0" max="100" value="100">
+                    </div>
+
+                    <!-- Creo el contenedor para la capa2 dentro del panel de capas -->                    
+                    <div class="toggleLayer" id="capa2">
+                        <div class="layer_titulo">
+                        <img src="./assets/iconos/icon_eyeclose.png" alt="Capa 2" class="icono-ojo">
+                        <span>Red vial</span>
+                        </div>
+                        <div class="layer_tools">
+
+                        </div>
+                        <p class="op-titulo">Opacidad</p>
+                        <input type="range" id="transparency1" min="0" max="100" value="100">
+                    </div>
+
+
+                </div>
+            </div>
+        </div> 
+    </div>
+
+
+    <!-- Contenedor para mapa base, no tocar -->
+    <div id="map"></div>
+
+
+    <!-- Pie de pagina --> 
+    <footer>
+        <div class="piedepagina_pags">
+                <div class="contenedor_redes">
+                    <a href="https://www.instagram.com/gobiernodelchaco" target="_blank" class="icon"><img class="redes__iconos-svg" src="./assets/iconos/instagram.svg" alt="instagram" title="instagram"/></a>
+                    <a href="https://www.facebook.com/GobiernodelChaco" target="_blank" class="icon"><img class="redes__iconos-svg" src="./assets/iconos/facebook.svg" alt="facebook" title="facebook"/></a>
+                    <a href="https://x.com/GobiernoChaco" class="icon" target="_blank"><img class="redes__iconos-svg" src="./assets/iconos/twitter-x.svg" alt="x-twitter" title="x-twitter"/></a>
+                    <a href="https://canalsomosuno.tv/" class="icon" target="_blank"><img class="redes__iconos-svg" src="./assets/iconos/radio.svg" alt="noticiasChaco" title="noticiasChaco"/></a>
+                </div>
+                <div class="contenedor_info">
+                    <div class="info_sit">
+                        <a href="mailto:sit.chaco@chaco.gob.ar"><img src="./assets/iconos/correo.png" alt="Correo SIT Chaco">sit.chaco@chaco.gob.ar</a>
+                        <a href="https://www.google.com/maps?q=Av.+Sarmiento+1768,+Resistencia,+Chaco" target="_blank"><img src="./assets/iconos/ubicacion.png" alt="Direccion SIT Chaco">Av. Sarmiento 1768 - Resistencia, Chaco</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer_copys">
+                <div class="copy_sit">
+                    &copy; Copyright 2024 SIT Chaco - Todos los derechos reservados
+                </div>
+                <div class="copy_gis360">
+                    <p>Este tema fue desarrollado por:</p>
+                    <a href="mailto:gis360consultoria@gmail.com">360Concept.</a>
+                </div>
+            </div> 
+        </div>    
+    </footer>
+
+
+
+    <!-- Acá van los Scripts de leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+    <script src="https://cdn.jsdelivr.net/leaflet.locatecontrol/0.60.0/L.Control.Locate.min.js" charset="utf-8"></script>
+
+    <!-- Acá van los Scripts propios -->
+    <script src="./js/managecapas.js"></script>
+    <script src="./js/toolsmapas.js"></script>
+
+</body>
+</html>
